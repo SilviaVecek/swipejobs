@@ -22,7 +22,11 @@ const ProfileWrapper = styled.div`
 const CardItemWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    max-width: 360px;
+    margin: 0 auto;
+    @media screen and (min-width: ${props => props.breakPoint}) {
+        max-width: 500px;
+    }
 `
 
 const Profile = () => {
@@ -45,7 +49,7 @@ const Profile = () => {
                 infoTitleOne='Maximum Distance' infoTitleDescOne={profileData.maxJobDistance}  
                 infoTitleTwo='Zone ID' infoTitleDescTwo={profileData.address?.zoneId} 
             />
-            <CardItemWrapper>
+            <CardItemWrapper breakPoint={breakPoint}>
                 <CardItem src={Location} title="Address" titleDetails={profileData.address?.formattedAddress}/>
                 <CardItem src={Phone} title="Number" titleDetails={profileData.phoneNumber}/>
                 <CardItem src={ID} title="ID" titleDetails={profileData.workerId}/>
