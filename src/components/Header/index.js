@@ -17,8 +17,11 @@ const StyledLink = styled(Link)`
         color: #41b0e4;
     }
     ${props => props.center && `display: flex; align-items: center;`}
+    ${props => props.margin && `margin-left: 1rem;`}
 `
+const LinkWrapper = styled.div``
 const SwipeIcon = styled.img``
+
 const Header = ({ name }) => {
     return (
         <HeaderWrapper>
@@ -26,7 +29,10 @@ const Header = ({ name }) => {
                 <SwipeIcon src="https://www.swipejobs.com/images/swipejobs-icon.png" alt="swipe jobs icon" />
                 swipejobs
             </StyledLink>
-            <StyledLink to="/" name>{name}</StyledLink>
+            <LinkWrapper>
+                <StyledLink to="/jobs" name>Job Listing</StyledLink>
+                <StyledLink to="/" name margin>{name}</StyledLink>
+            </LinkWrapper>
         </HeaderWrapper>
     )
 }
