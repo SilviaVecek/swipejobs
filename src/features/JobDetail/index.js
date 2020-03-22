@@ -57,7 +57,6 @@ const JobDetail = () => {
     const jobDetail = jobListData.find(item => item.jobId === id);
     const reportDetails = jobDetail.company.reportTo.name && jobDetail.company.reportTo.phone ? 
     `${jobDetail.company.reportTo.name} ${jobDetail.company.reportTo.phone}` : `${jobDetail.company.reportTo.name} ${jobDetail.branchPhoneNumber}`;
-    console.log(jobDetail.shifts);
     
     return (
         <>
@@ -69,7 +68,7 @@ const JobDetail = () => {
                 breakPoint={breakPoint}
             />
             <CardItemWrapper breakPoint={breakPoint}>
-                <CardItem src={Calendar} title="Shift Dates" titleDetails={jobDetail.shifts}/>
+                <CardItem breakPoint={breakPoint} src={Calendar} title="Shift Dates" titleDetails={jobDetail.shifts}/>
                 <CardItem src={Location} title="Location" titleDetails={jobDetail.company.address.formattedAddress}/>
                 {jobDetail.requirements && <CardItem src={Requirements} title="Requirements" titleDetails={jobDetail.requirements}/>}
                 <CardItem src={User} title="Report To" titleDetails={reportDetails}/>

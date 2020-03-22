@@ -17,7 +17,10 @@ const Icon = styled.img`
 const CardDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    ${props => props.title === 'Shift Dates' && `max-height: 150px; overflow: overlay;`}
+    @media screen and (min-width: ${props => props.breakPoint}) {
+        ${props => props.title === 'Shift Dates' && `max-height: 180px; overflow: overlay;`}
+    }
+    width: 100%;
 `
 
 const Title = styled.div`
@@ -30,11 +33,11 @@ const TitleDetails = styled.div`
     font-size: 0.8rem;
 `
 
-const CardItem = ({ src, title, titleDetails}) => {
+const CardItem = ({ src, title, titleDetails, breakPoint}) => {
     return (
         <CardItemWrapper>
             <Icon src={src} alt={src}></Icon>
-            <CardDetailWrapper title={title}>
+            <CardDetailWrapper title={title} breakPoint={breakPoint}>
                 <Title>{title}</Title>
                 {Array.isArray(titleDetails) 
                     ? titleDetails.map((item, index) => 

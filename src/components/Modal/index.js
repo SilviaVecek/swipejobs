@@ -25,7 +25,7 @@ const ModalOverlay = styled.div`
 const Modal = ({ text, onClick }) => {
     return (
         <ModalOverlay onClick={onClick}>
-            <ModalBox>{text}<CrossIcon style={{maxWidth: '15px', maxHeight: '15px', fill: '#fff', position: 'fixed', right: '6%', top: '20%'}}/></ModalBox>
+            <ModalBox>{text}<CrossIcon style={{cursor: 'pointer', maxWidth: '15px', maxHeight: '15px', fill: '#fff', position: 'fixed', right: '6%', top: '20%'}}/></ModalBox>
         </ModalOverlay>
     );
 }
