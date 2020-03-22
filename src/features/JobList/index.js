@@ -34,7 +34,7 @@ const JobList = () => {
     if (jobsLoading) {
         return 'Loading...'
     }
-    
+
     const fullName = `${profileData.firstName} ${profileData.lastName}`
     
     return (
@@ -44,8 +44,8 @@ const JobList = () => {
                 <StyledLink key={index} to={`/jobs/${item.jobId}`}>
                     <Card key={index} src={item.jobTitle.imageUrl} title={item.jobTitle.name}
                         titleDetail={item.company.name} infoTitleOne="Distance" 
-                        infoTitleTwo="Hourly Rate" infoTitleDescOne={`${item.milesToTravel} miles`}
-                        infoTitleDescTwo={`$${item.wagePerHourInCents}`}
+                        infoTitleTwo="Hourly Rate" infoTitleDescOne={`${Math.round(item.milesToTravel)} miles`}
+                        infoTitleDescTwo={`$${Math.round(item.wagePerHourInCents/100)}`}
                         breakPoint={breakPoint}
                     />
                 </StyledLink>

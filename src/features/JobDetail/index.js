@@ -56,18 +56,20 @@ const JobDetail = () => {
     const fullName = `${profileData.firstName} ${profileData.lastName}`
     const jobDetail = jobListData.find(item => item.jobId === id);
     const reportDetails = jobDetail.company.reportTo.name && jobDetail.company.reportTo.phone ? 
-    `${jobDetail.company.reportTo.name} ${jobDetail.company.reportTo.phone}` : jobDetail.company.reportTo.name
+    `${jobDetail.company.reportTo.name} ${jobDetail.company.reportTo.phone}` : `${jobDetail.company.reportTo.name} ${jobDetail.branchPhoneNumber}`;
+    console.log(jobDetail.shifts);
+    
     return (
         <>
             <Header name={fullName}/>
             <Card src={jobDetail.jobTitle?.imageUrl} title={jobDetail.jobTitle?.name}
                 titleDetail={jobDetail.company?.name} infoTitleOne="Distance" 
-                infoTitleTwo="Hourly Rate" infoTitleDescOne={`${jobDetail.milesToTravel} miles`}
-                infoTitleDescTwo={`$${jobDetail.wagePerHourInCents}`}
+                infoTitleTwo="Hourly Rate" infoTitleDescOne={`${Math.round(jobDetail.milesToTravel)} miles`}
+                infoTitleDescTwo={`$${Math.round(jobDetail.wagePerHourInCents/100)}`}
                 breakPoint={breakPoint}
             />
             <CardItemWrapper breakPoint={breakPoint}>
-                <CardItem src={Calendar} title="Shift Dates" titleDetails={JSON.stringify(jobDetail.shifts)}/>
+                <CardItem src={Calendar} title="Shift Dates" titleDetails={jobDetail.shifts}/>
                 <CardItem src={Location} title="Location" titleDetails={jobDetail.company.address.formattedAddress}/>
                 {jobDetail.requirements && <CardItem src={Requirements} title="Requirements" titleDetails={jobDetail.requirements}/>}
                 <CardItem src={User} title="Report To" titleDetails={reportDetails}/>

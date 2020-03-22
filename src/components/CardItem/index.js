@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatShiftDates } from '../../utils/globalVariables';
 
 const CardItemWrapper = styled.div`
     padding: 1rem 0;
@@ -16,6 +17,7 @@ const Icon = styled.img`
 const CardDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    ${props => props.title === 'Shift Dates' && `max-height: 150px; overflow: overlay;`}
 `
 
 const Title = styled.div`
@@ -32,9 +34,15 @@ const CardItem = ({ src, title, titleDetails}) => {
     return (
         <CardItemWrapper>
             <Icon src={src} alt={src}></Icon>
-            <CardDetailWrapper>
+            <CardDetailWrapper title={title}>
                 <Title>{title}</Title>
-                <TitleDetails>{titleDetails}</TitleDetails>
+                {Array.isArray(titleDetails) 
+                    ? titleDetails.map((item, index) => 
+                    (title === "Shift Dates"
+                        ? <TitleDetails>{formatShiftDates(item.startDate, item.endDate)}</TitleDetails>
+                        : <TitleDetails key={index}>{item}</TitleDetails>)
+                    )
+                    : <TitleDetails>{titleDetails}</TitleDetails>}
             </CardDetailWrapper>
         </CardItemWrapper>
     )
