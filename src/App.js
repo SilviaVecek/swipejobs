@@ -6,22 +6,22 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Profile />
-        </Route>
-        <Route exact path="/jobs">
-          <JobList />
-        </Route>
-        <Route path="/jobs/:id">
-          <JobDetail />
-        </Route>
-        <Route path="*">
-          Not found
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Profile />
+          </Route>
+          <Route exact path="/jobs">
+            <JobList />
+          </Route>
+          <Route path="/jobs/:id">
+            <JobDetail />
+          </Route>
+          <Route path="*">
+            Not found
+          </Route>
+        </Switch>
+      </BrowserRouter>
   );
 }
 

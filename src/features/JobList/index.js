@@ -8,6 +8,7 @@ import {
 import {
     selectJobList,
     jobListRequest,
+    selectLoadingIndicator
 } from './jobListSlice';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
@@ -22,6 +23,7 @@ const StyledLink = styled(Link)`
 const JobList = () => {
     const profileData = useSelector(selectProfile);
     const jobListData = useSelector(selectJobList);
+    const jobsLoading = useSelector(selectLoadingIndicator);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,6 +31,10 @@ const JobList = () => {
         dispatch(profileRequest(workerID));
     }, []);
 
+    if (jobsLoading) {
+        return 'Loading...'
+    }
+    
     const fullName = `${profileData.firstName} ${profileData.lastName}`
     
     return (

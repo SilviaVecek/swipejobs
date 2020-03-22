@@ -55,7 +55,8 @@ const JobDetail = () => {
     
     const fullName = `${profileData.firstName} ${profileData.lastName}`
     const jobDetail = jobListData.find(item => item.jobId === id);
-    
+    const reportDetails = jobDetail.company.reportTo.name && jobDetail.company.reportTo.phone ? 
+    `${jobDetail.company.reportTo.name} ${jobDetail.company.reportTo.phone}` : jobDetail.company.reportTo.name
     return (
         <>
             <Header name={fullName}/>
@@ -69,7 +70,7 @@ const JobDetail = () => {
                 <CardItem src={Calendar} title="Shift Dates" titleDetails={JSON.stringify(jobDetail.shifts)}/>
                 <CardItem src={Location} title="Location" titleDetails={jobDetail.company.address.formattedAddress}/>
                 {jobDetail.requirements && <CardItem src={Requirements} title="Requirements" titleDetails={jobDetail.requirements}/>}
-                <CardItem src={User} title="Report To" titleDetails={`${jobDetail.company.reportTo.name} ${jobDetail.company.reportTo.phone}`}/>
+                <CardItem src={User} title="Report To" titleDetails={reportDetails}/>
                 <Buttons onReject={() => handleClick('reject')} onAccept={() => handleClick('accept')}/>
             </CardItemWrapper>        
             {modalState && <Modal onClick={() => setModalState(false)} text={jobResponse.success ? 'Your action was successful' : jobResponse.message}></Modal>}

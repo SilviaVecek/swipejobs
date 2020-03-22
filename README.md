@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Hi Andy!
+
+Please find my code on github https://github.com/SilviaVecek/swipejobs
+You can also find the coding challenge online https://swipejobschallenge.netlify.com/
+
+
 ## Available Scripts
 
 In the project directory, you can run:
